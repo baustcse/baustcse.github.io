@@ -36,7 +36,9 @@ export function useInView<T extends HTMLElement>(once = true) {
     const el = ref.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      ([entry]) => {
+      (entries) => {
+        const entry = entries[0];
+        if (!entry) return;
         if (entry.isIntersecting) {
           setInView(true);
           if (once) io.unobserve(entry.target);
@@ -84,7 +86,7 @@ export function useTypingEffect(phrases: string[], speed = 55, pause = 1900) {
 
   useEffect(() => {
     if (prefersReduced()) {
-      setText(phrases[0]);
+      setText(phrases[0] ?? "");
       setDone(true);
       return;
     }
@@ -94,7 +96,7 @@ export function useTypingEffect(phrases: string[], speed = 55, pause = 1900) {
     let timer: ReturnType<typeof setTimeout>;
 
     const step = () => {
-      const current = phrases[phrase];
+      const current = phrases[phrase] ?? "";
       if (!deleting) {
         char += 1;
         setText(current.slice(0, char));
@@ -137,11 +139,11 @@ export function useScrollProgress() {
 }
 
 export function useActiveSection(ids: string[]) {
-  const [active, setActive] = useState(ids[0]);
+  const [active, setActive] = useState(ids[0] ?? "");
   useEffect(() => {
     const onScroll = () => {
       const y = window.scrollY + window.innerHeight * 0.3;
-      let current = ids[0];
+      let current = ids[0] ?? "";
       ids.forEach((id) => {
         const el = document.getElementById(id);
         if (el && el.offsetTop <= y) current = id;
