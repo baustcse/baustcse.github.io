@@ -81,12 +81,6 @@ export function Navbar() {
               </li>
             ))}
           </ul>
-          <a
-            href="#contact"
-            className="ml-2 hidden rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground shadow-glow transition-transform duration-300 hover:-translate-y-0.5 sm:inline-flex"
-          >
-            Apply Now
-          </a>
           <button
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -124,13 +118,6 @@ export function Navbar() {
               </li>
             ))}
           </ul>
-          <a
-            href="#contact"
-            onClick={() => setOpen(false)}
-            className="mt-8 inline-flex justify-center rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground"
-          >
-            Apply Now
-          </a>
         </div>
       )}
     </header>

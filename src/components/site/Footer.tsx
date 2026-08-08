@@ -126,10 +126,10 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto mt-12 flex max-w-[1200px] flex-col gap-2 border-t border-silver/15 pt-6 text-xs sm:flex-row sm:items-center sm:justify-between">
+      <div className="mx-auto mt-12 max-w-[1200px] border-t border-silver/15 pt-6 text-xs">
         <p>© 2025 Department of CSE, BAUST, Saidpur. All rights reserved.</p>
-        <p>Made with ❤️ by CSE students</p>
       </div>
+
     </footer>
   );
 }
