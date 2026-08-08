@@ -141,12 +141,13 @@ export const TECH = [
 
 export const STATS = [
   { value: 8, suffix: "+", label: "Years of Excellence" },
-  { value: 500, suffix: "+", label: "Graduates Produced" },
-  { value: 4, suffix: "+", label: "National Championships" },
+  { value: 300, suffix: "+", label: "Graduates Produced" },
+  { value: 700, suffix: "+", label: "Current Students" },
   { value: 5, suffix: "", label: "Specialized Labs" },
-  { value: 15, suffix: "+", label: "Faculty Members" },
+  { value: 30, suffix: "+", label: "Faculty Members" },
   { value: 1, suffix: "", label: "Washington Accord Recognition" },
 ] as const;
+
 
 export const NEWS = [
   {

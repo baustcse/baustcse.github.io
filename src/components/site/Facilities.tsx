@@ -1,8 +1,8 @@
-import { Cpu, Database, Laptop, Network, Projector, Wrench } from "lucide-react";
+import { Check, Cpu, Database, Laptop, Network, Projector, Terminal, Wrench } from "lucide-react";
 import { SectionHeader } from "./SectionHeader";
 import { LABS } from "@/data/site";
 
-const ICONS = { Laptop, Database, Cpu, Network, Wrench, Projector } as const;
+const ICONS = { Laptop, Terminal, Database, Cpu, Network, Wrench, Projector } as const;
 
 export function Facilities() {
   return (
@@ -19,7 +19,7 @@ export function Facilities() {
             return (
               <article
                 key={lab.name}
-                className="glass-card lift-hover group p-7 reveal"
+                className="glass-card lift-hover group flex flex-col p-7 reveal"
                 data-reveal
                 style={{ ["--reveal-delay" as string]: `${i * 90}ms` }}
               >
@@ -30,9 +30,18 @@ export function Facilities() {
                   {lab.name}
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{lab.desc}</p>
-                <p className="mt-4 font-mono text-xs text-primary opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                  Learn more →
-                </p>
+                <ul className="mt-5 space-y-2.5 border-t border-border pt-5">
+                  {lab.points.map((point) => (
+                    <li key={point} className="flex items-start gap-2.5">
+                      <span className="mt-0.5 grid size-5 shrink-0 place-items-center rounded-full bg-primary/10 text-primary">
+                        <Check className="size-3" />
+                      </span>
+                      <span className="min-w-0 text-sm leading-relaxed text-muted-foreground">
+                        {point}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </article>
             );
           })}
