@@ -131,7 +131,6 @@ At <https://baustcse.github.io/>:
 | `npm ci` error about missing lockfile | You swapped back to npm without committing `package-lock.json` |
 
 ---
-
 ## Not yet verified
 
 The build was **not** run end-to-end before this was written — dependency install
@@ -140,3 +139,4 @@ did not complete in the authoring environment. The config was validated against 
 first CI run on `dev` is the real test. If prerendering errors, the most likely fix
 is relaxing `failOnError` in `vite.config.ts` or switching to SPA mode
 (`tanstackStart.spa.enabled`).
+
