@@ -9,11 +9,11 @@ const POINTS = [
 ];
 
 const TIMELINE = [
-  { year: "2015", text: "Department founded on 15 February at Saidpur Cantonment" },
-  { year: "2019", text: "Syllabus revised for modern computing practice" },
   { year: "2021", text: "Outcome-Based Education (OBE) curriculum adopted" },
-  { year: "Today", text: "Accredited programme with national championship record" },
+  { year: "2019", text: "Syllabus revised for modern computing practice" },
+  { year: "2015", text: "Department founded on 15 February at Saidpur Cantonment" },
 ];
+
 
 export function About() {
   return (

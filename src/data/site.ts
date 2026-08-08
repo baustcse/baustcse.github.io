@@ -11,35 +11,90 @@ export const NAV_LINKS = [
 export const LABS = [
   {
     icon: "Laptop",
-    name: "Computer Programming & OS Lab",
-    desc: "Core programming and operating system concepts.",
+    name: "Computer Programming Lab",
+    desc: "Core programming practice from fundamentals to problem solving.",
+    points: [
+      "C, C++, Java and Python workstations",
+      "Structured & object-oriented programming labs",
+      "Data structures and algorithm implementation",
+      "Competitive programming & contest practice",
+      "Project-based software development sessions",
+    ],
+  },
+  {
+    icon: "Terminal",
+    name: "Operating System Lab",
+    desc: "System-level experiments on modern operating systems.",
+    points: [
+      "Linux/Unix shell and command-line practice",
+      "Process scheduling & synchronization experiments",
+      "Memory and virtual memory management labs",
+      "File system and disk scheduling analysis",
+      "Virtualization with VirtualBox & Docker",
+    ],
   },
   {
     icon: "Database",
     name: "Database & Data Warehouse Lab",
     desc: "DBMS, data warehousing, and analytics.",
+    points: [
+      "SQL & PL/SQL query development",
+      "ER modelling and schema normalization",
+      "MySQL, PostgreSQL and Oracle environments",
+      "Data warehousing, ETL and OLAP practice",
+      "Analytics and reporting mini-projects",
+    ],
   },
   {
     icon: "Cpu",
     name: "Digital & Embedded System Lab",
     desc: "Digital logic design and embedded systems.",
+    points: [
+      "Logic gates, flip-flops and counter circuits",
+      "Combinational & sequential circuit design",
+      "Arduino and Raspberry Pi development kits",
+      "Sensor, actuator and IoT prototyping",
+      "FPGA/VHDL simulation exercises",
+    ],
   },
   {
     icon: "Network",
     name: "Network & Hardware Lab",
     desc: "Computer networking and hardware engineering.",
+    points: [
+      "Structured cabling and crimping practice",
+      "Router & switch configuration (CLI)",
+      "Subnetting, routing and protocol analysis",
+      "Cisco Packet Tracer network simulation",
+      "PC assembly, troubleshooting and maintenance",
+    ],
   },
   {
     icon: "Wrench",
     name: "Microprocessor & Interfacing Lab",
     desc: "Microprocessor architecture and peripheral interfacing.",
+    points: [
+      "8085/8086 assembly language programming",
+      "Microcontroller (8051, AVR) experiments",
+      "ADC/DAC and I/O port interfacing",
+      "Stepper motor and display driver circuits",
+      "Trainer kits with real-time debugging",
+    ],
   },
   {
     icon: "Projector",
     name: "Multimedia Smart Classrooms",
     desc: "Interactive smart boards and multimedia-equipped rooms.",
+    points: [
+      "Interactive smart boards in every room",
+      "High-lumen multimedia projectors",
+      "Recorded lecture and presentation support",
+      "Campus-wide high-speed Wi-Fi coverage",
+      "Seminar and thesis defence facilities",
+    ],
   },
 ] as const;
+
 
 export const ACHIEVEMENTS = [
   {
