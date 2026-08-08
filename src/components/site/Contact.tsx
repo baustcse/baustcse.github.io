@@ -83,60 +83,8 @@ export function Contact() {
             </div>
           </div>
 
-          <form
-            className="glass-card p-7 reveal-right"
-            data-reveal
-            onSubmit={(e) => {
-              e.preventDefault();
-              toast.success("Thanks! Your message has been noted.", {
-                description: `For urgent queries, email ${CONTACT.email}.`,
-              });
-              (e.currentTarget as HTMLFormElement).reset();
-            }}
-          >
-            <h3 className="text-xl font-semibold text-foreground">Send a message</h3>
-            <div className="mt-6 space-y-4">
-              {[
-                { id: "name", label: "Name", type: "text" },
-                { id: "email", label: "Email", type: "email" },
-                { id: "subject", label: "Subject", type: "text" },
-              ].map((f) => (
-                <div key={f.id}>
-                  <label htmlFor={f.id} className="label-caps text-muted-foreground">
-                    {f.label}
-                  </label>
-                  <input
-                    id={f.id}
-                    name={f.id}
-                    type={f.type}
-                    required
-                    className="mt-2 w-full rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
-                    placeholder={`Your ${f.label.toLowerCase()}`}
-                  />
-                </div>
-              ))}
-              <div>
-                <label htmlFor="message" className="label-caps text-muted-foreground">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  required
-                  rows={4}
-                  className="mt-2 w-full resize-none rounded-xl border border-input bg-card px-4 py-3 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-primary"
-                  placeholder="How can we help?"
-                />
-              </div>
-              <button
-                type="submit"
-                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3.5 font-semibold text-primary-foreground shadow-glow transition-transform duration-300 hover:-translate-y-0.5"
-              >
-                <Send className="size-4" />
-                Submit
-              </button>
-            </div>
-          </form>
+
+
         </div>
       </div>
     </section>
