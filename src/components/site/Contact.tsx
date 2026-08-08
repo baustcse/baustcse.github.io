@@ -29,7 +29,7 @@ export function Contact() {
 
         <div className="mt-12">
           <div className="reveal-left" data-reveal>
-            <ul className="space-y-3">
+            <ul className="grid gap-3 sm:grid-cols-2">
               {ITEMS.map((item, i) => (
                 <li
                   key={item.label}
