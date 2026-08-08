@@ -17,7 +17,7 @@ export default defineConfig({
     server: { entry: "server" },
     // Crawl from "/" and write a static .html for every reachable route.
     prerender: {
-      enabled: isStaticExport,
+      enabled:false,
       crawlLinks: true,
       autoStaticPathsDiscovery: true,
       failOnError: true,
