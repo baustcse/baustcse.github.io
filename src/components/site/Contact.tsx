@@ -1,5 +1,5 @@
-import { Facebook, Globe, Mail, MapPin, Phone, Send } from "lucide-react";
-import { toast } from "sonner";
+import { Facebook, Globe, Mail, MapPin, Phone } from "lucide-react";
+
 import { SectionHeader } from "./SectionHeader";
 import { CONTACT } from "@/data/site";
 
@@ -27,7 +27,7 @@ export function Contact() {
           subtitle="Admission queries, collaborations and campus visits."
         />
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:gap-16">
+        <div className="mt-12">
           <div className="reveal-left" data-reveal>
             <ul className="space-y-3">
               {ITEMS.map((item, i) => (
