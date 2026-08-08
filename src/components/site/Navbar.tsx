@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import cseLogo from "@/assets/baust-cse.jpeg.asset.json";
-import baustLogo from "@/assets/baust.jpeg.asset.json";
+import cseLogo from "@/assets/baust-cse.jpeg";
+import baustLogo from "@/assets/baust.jpeg";
 import { NAV_LINKS } from "@/data/site";
 import { useActiveSection, useScrollProgress } from "@/hooks/use-animations";
 
@@ -45,7 +45,7 @@ export function Navbar() {
       >
         <Link to="/" className="flex min-w-0 items-center gap-3">
           <img
-            src={baustLogo.url}
+            src={baustLogo}
             alt="BAUST university crest"
             className="h-10 w-10 shrink-0 rounded-full object-cover ring-1 ring-border"
             loading="eager"
@@ -96,7 +96,7 @@ export function Navbar() {
       {open && (
         <div className="fixed inset-0 top-0 z-40 flex flex-col bg-background/98 px-6 pt-24 backdrop-blur-xl lg:hidden">
           <img
-            src={cseLogo.url}
+            src={cseLogo}
             alt="Department of Computer Science and Engineering logo"
             className="mb-6 h-20 w-full rounded-xl object-cover object-center"
           />
