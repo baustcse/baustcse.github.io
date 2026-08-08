@@ -1,0 +1,88 @@
+name: Deploy to GitHub Pages
+
+# Requirement 1: run only on pushes to `dev`, with no path filter so every
+# file change triggers a full rebuild and site sync.
+on:
+  push:
+    branches:
+      - dev
+  # Allows a manual re-run from the Actions tab without pushing a commit.
+  workflow_dispatch:
+
+# Minimum token scopes needed by actions/deploy-pages@v4.
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Requirement 4: one Pages deployment at a time; a newer push cancels an
+# in-flight run so deployments can never race each other.
+concurrency:
+  group: github-pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    # Requirement 2
+    runs-on: ubuntu-latest
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+
+      # The repo's lockfile is bun.lock, so `npm ci` has no package-lock.json to
+      # read. Bun is used for a reproducible, lockfile-pinned install instead.
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Cache Bun install
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
+          restore-keys: ${{ runner.os }}-bun-
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build static site
+        env:
+          # Switches the Nitro preset to `static` and turns on TanStack Start
+          # prerendering (see vite.config.ts). Output: .output/public
+          STATIC_EXPORT: "1"
+          NODE_ENV: production
+        run: bun run build
+
+      - name: Prepare Pages output
+        run: |
+          set -euo pipefail
+          test -f .output/public/index.html \
+            || { echo "::error::Build did not produce .output/public/index.html"; exit 1; }
+          # Stop GitHub Pages from stripping underscore-prefixed asset folders.
+          touch .output/public/.nojekyll
+          # Client-side routing fallback for any non-prerendered deep link.
+          cp .output/public/index.html .output/public/404.html
+          ls -R .output/public | head -50
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .output/public
+          retention-days: 1
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -6,10 +6,25 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// GitHub Pages serves static files only, so production builds must prerender every
+// route to HTML instead of shipping a Nitro server. Set STATIC_EXPORT=1 (the CI does)
+// to switch the Nitro preset to `static` — output lands in `.output/public`.
+const isStaticExport = process.env.STATIC_EXPORT === "1";
+
 export default defineConfig({
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    // Crawl from "/" and write a static .html for every reachable route.
+    prerender: {
+      enabled: isStaticExport,
+      crawlLinks: true,
+      autoStaticPathsDiscovery: true,
+      failOnError: true,
+    },
   },
+  nitro: isStaticExport
+    ? { preset: "static", output: { dir: ".output", publicDir: ".output/public" } }
+    : undefined,
 });
