@@ -1,5 +1,5 @@
 import { Facebook, Globe, Mail } from "lucide-react";
-import baustLogo from "@/assets/baust.jpeg.asset.json";
+import baustLogo from "@/assets/baust.jpeg";
 import syllabus from "@/assets/syllabus.pdf.asset.json";
 import { CONTACT, NAV_LINKS } from "@/data/site";
 
@@ -10,7 +10,7 @@ export function Footer() {
         <div>
           <div className="flex min-w-0 items-center gap-3">
             <img
-              src={baustLogo.url}
+              src={baustLogo}
               alt="BAUST crest"
               className="size-11 shrink-0 rounded-full object-cover"
               loading="lazy"
