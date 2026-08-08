@@ -1,5 +1,5 @@
 import { ArrowRight, Award, ChevronDown, GraduationCap, Globe2, ShieldCheck } from "lucide-react";
-import cseLogo from "@/assets/baust-cse.jpeg.asset.json";
+import cseLogo from "@/assets/baust-cse.jpeg";
 import { ParticleField } from "./ParticleField";
 import { useTypingEffect } from "@/hooks/use-animations";
 
@@ -33,7 +33,7 @@ export function Hero() {
 
       <div className="relative mx-auto flex min-h-[calc(100vh-7rem)] max-w-[1200px] flex-col items-center justify-center px-5 pb-16 text-center lg:px-8">
         <img
-          src={cseLogo.url}
+          src={cseLogo}
           alt="Department of Computer Science and Engineering, BAUST Saidpur"
           className="mb-8 h-24 w-auto rounded-2xl object-cover shadow-soft ring-1 ring-border sm:h-28"
           loading="eager"
